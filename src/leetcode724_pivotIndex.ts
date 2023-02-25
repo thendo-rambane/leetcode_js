@@ -1,5 +1,4 @@
-import {createTestCase, runTests} from "./utility";
-import path from "path";
+import {testing, equal} from "./tester";
 
 function pivotIndex(nums: number[]): number {
   let output = -1
@@ -17,11 +16,9 @@ function pivotIndex(nums: number[]): number {
 
 
 export default function testPivotIndex() {
-  const testCases = [
-    createTestCase([1,7,3,6,5,6], 3), 
-    createTestCase([1,2,3], -1), 
-    createTestCase([2,1,-1], 0)
-  ]
-  runTests(testCases, pivotIndex, path.basename(__filename));
+  testing(pivotIndex)
+  .test(equal(pivotIndex( [1,7,3,6,5,6] ), 3))
+  .test(equal(pivotIndex( [1,2,3] ), -1)) 
+  .test(equal(pivotIndex( [2,1,-1] ),0))
 }
 
